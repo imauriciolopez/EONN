@@ -1,0 +1,33 @@
+{
+    "Data type": "double",
+    "Dataset": "mini_box",
+    "N iters": 1000,
+    "N inds": 200,
+    "N experimentos": 1,
+    "Seed": 277016,
+    "Archivo salida": "../resultados/mini_box_4_6_binary_DE.txt",
+    "Archivo graficas": "../graficas/mini_box_4_6_binary_DE.png",
+    "Optimizador": "DE",
+    "Lower bound": -1.0,
+    "Upper bound": 1.0,
+    "Fitness": "binary",
+    "F": 0.75,
+    "C_r": 0.8,
+    "N capas": 4,
+    "Estructura": [
+        2,
+        5,
+        3,
+        1
+    ],
+    "Activaciones": [
+        "tanh",
+        "tanh",
+        "tanh",
+        "sigmoid"
+    ],
+    "Verbose": -1,
+    "Reporte": "train",
+    "Clip": 1,
+    "Normalizacion": 1
+}

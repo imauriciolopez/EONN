@@ -1,0 +1,34 @@
+{
+    "Data type": "double",
+    "Dataset": "mini_box",
+    "N iters": 1000,
+    "N inds": 200,
+    "N experimentos": 1,
+    "Seed": 277014,
+    "Archivo salida": "../resultados/mini_box_1_4_accuracy_SHADE.txt",
+    "Archivo graficas": "../graficas/mini_box_1_4_accuracy_SHADE.png",
+    "Optimizador": "SHADE",
+    "Lower bound": -1.0,
+    "Upper bound": 1.0,
+    "Fitness": "accuracy",
+    "F": 0.8,
+    "C_r": 0.9,
+    "N capas": 4,
+    "Estructura": [
+        2,
+        5,
+        3,
+        1
+    ],
+    "Activaciones": [
+        "tanh",
+        "tanh",
+        "tanh",
+        "sigmoid"
+    ],
+    "Verbose": -1,
+    "Reporte": "train",
+    "Clip": 1,
+    "Normalizacion": 1,
+    "Mutacion": "pbest"
+}
