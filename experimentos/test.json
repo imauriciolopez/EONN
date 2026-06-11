@@ -1,18 +1,15 @@
 {
     "Data type": "double",
     "Dataset": "mini_box",
-    "N iters": 1000,
-    "N inds": 200,
     "N experimentos": 1,
     "Seed": 277014,
-    "Archivo salida": "../resultados/mini_box_1_4_accuracy_SHADE.txt",
-    "Archivo graficas": "../graficas/mini_box_1_4_accuracy_SHADE.png",
+
+    "Archivo salida": "../resultados/test.txt",
+    "Archivo graficas": "../graficas/test.png",
+    
     "Optimizador": "CMSA",
-    "Lower bound": -1.0,
-    "Upper bound": 1.0,
     "Fitness": "accuracy",
-    "F": 0.8,
-    "C_r": 0.9,
+    "Reporte": "train",
     "N capas": 4,
     "Estructura": [
         2,
@@ -26,9 +23,19 @@
         "tanh",
         "sigmoid"
     ],
-    "Verbose": -1,
-    "Reporte": "train",
-    "Clip": 1,
+    
+    "N iters": 1000,
+    "N inds": 200,
+    
     "Normalizacion": 1,
-    "Mutacion": "pbest"
+    "Lower bound": -1.0,
+    "Upper bound": 1.0,
+    "Clip": 1,
+
+    "F": 0.8,
+    "C_r": 0.9,
+    
+    "Mutacion": "pbest",
+
+    "Verbose": -1
 }

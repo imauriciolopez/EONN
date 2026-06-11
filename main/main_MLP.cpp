@@ -1,5 +1,9 @@
 #include "../include/utils.hpp"
 #include "../include/MLP.hpp"
+#include "../include/ED.hpp"
+#include "../include/PSO.hpp"
+#include "../include/SHADE.hpp"
+#include "../include/CMSA.hpp"
 
 #include <../nlohmann/json.hpp>
 #include <iostream>
@@ -31,11 +35,9 @@ int main(int argc, char* argv[]){
     int n_archivos=json["N archivos"];
     std::vector<std::string> rutas=json["Archivos"].get<std::vector<std::string> >();
 
-
     omp_set_num_threads(n_hilos);
     #pragma omp parallel for schedule(dynamic)
     for(int i=0;i<n_archivos;i++){
-        
         std::ifstream file(rutas[i].c_str());
         nlohmann::json json_;
         file>>json_;
@@ -48,6 +50,7 @@ int main(int argc, char* argv[]){
                    std::vector<double>, 
                    std::vector<double>,
                    std::vector<double>,
+                   std::vector<double>, 
                    std::vector<double>, 
                    std::vector<double>, 
                    std::vector<bool> > resultados;
@@ -64,21 +67,12 @@ int main(int argc, char* argv[]){
 }
 
 /*
-    //cargar información
-    std::ifstream file(argv[1]);
-    if(!file){
-        throw std::runtime_error("NO SE ENCONTRÓ EL JSON");
-    }
-    nlohmann::json json;
-    file>>json;
-
-
-    std::ofstream archivo_1("archivo.txt"); // crea o sobrescribe el archivo_1
-    if(!archivo_1.is_open()) {
-        std::cerr << "Error al abrir el archivo_1\n";
-        return 1;
-    }
-    archivo_1<<"algo";
-    archivo_1.close();
+    hello_world_local();
+    hello_world_utils();
+    hello_world_CMSA();
+    hello_world_ED();
+    hello_world_SHADE();
+    hello_world_PSO();
+    
 */
 

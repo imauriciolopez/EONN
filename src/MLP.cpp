@@ -1,5 +1,9 @@
 #include "../include/utils.hpp"
 #include "../include/MLP.hpp"
+#include "../include/ED.hpp"
+#include "../include/PSO.hpp"
+#include "../include/SHADE.hpp"
+#include "../include/CMSA.hpp"
 
 #include <../nlohmann/json.hpp>
 #include <iostream>
@@ -392,6 +396,7 @@ void guardar_resultados(std::tuple<unsigned int,
                                 std::vector<double>, 
                                 std::vector<double>, 
                                 std::vector<double>, 
+                                std::vector<double>, 
                                 std::vector<bool> >resultados, 
                                 nlohmann::json json){
 
@@ -411,7 +416,8 @@ void guardar_resultados(std::tuple<unsigned int,
     std::vector<double> promedio=get<7>(resultados);
     std::vector<double> desvest=get<8>(resultados);
     std::vector<double> tiempo_por_iteracion=get<9>(resultados);
-    std::vector<bool> succes=get<10>(resultados);
+    std::vector<double> poblacion_final=get<10>(resultados);
+    std::vector<bool> succes=get<11>(resultados);
 
     archivo<<"{\n";
     archivo<<"  \"Seed\": "<<seed<<",\n";
@@ -485,6 +491,14 @@ void guardar_resultados(std::tuple<unsigned int,
             archivo<<tiempo_por_iteracion[i]<<", ";
         }
         archivo<<tiempo_por_iteracion[tiempo_por_iteracion.size()-1];
+    }
+
+    archivo<<"],\n  \"Población final\": [";
+    if(!poblacion_final.empty()){
+        for(int i=0;i<poblacion_final.size()-1;i++){
+            archivo<<poblacion_final[i]<<", ";
+        }
+        archivo<<poblacion_final[poblacion_final.size()-1];
     }
     
     archivo<<"],\n  \"Succes\": [";

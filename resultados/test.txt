@@ -1,0 +1,14 @@
+{
+  "Seed": 0,
+  "Best loss": [0],
+  "Worst loss": [0],
+  "Best accuracy": [0],
+  "Worst accuracy": [0],
+  "Best iteration": [0],
+  "Worst iteration": [0],
+  "Promedio": [0],
+  "Desvest": [0],
+  "Tiempo por iteración": [0],
+  "Población final": [0],
+  "Succes": [0]
+}

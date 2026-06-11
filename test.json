@@ -1,5 +1,7 @@
 {
   "N archivos": 3,
   "N hilos": 3,
-  "Archivos": ["j_1_4_accuracy_mini_box_SHADE.json", "j_1_7_accuracy_mini_box_PSO.json", "j_4_6_binary_mini_box_DE.json"]
+  "Archivos": ["../experimentos/j_1_4_accuracy_mini_box_SHADE.json", 
+               "../experimentos/j_1_7_accuracy_mini_box_PSO.json", 
+               "../experimentos/j_4_6_binary_mini_box_DE.json"]
 }
