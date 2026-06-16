@@ -18,6 +18,10 @@
 #include <cstdlib>
 #include <omp.h>
 
+void hello_world_local(){
+    std::cout<<"Hello, world! (from local)"<<std::endl;
+}
+
 individuo::individuo(int n_capas,
                      std::vector<int> estructura,
                      double lower_bound,
@@ -382,8 +386,50 @@ std::vector<double> individuo::b_decision_random(int n_capas, std::vector<int> e
     return b_decision;
 }
 
-void hello_world_local(){
-    std::cout<<"Hello, world! (from local)"<<std::endl;
+std::vector<double> individuo::aplanar_parametros(){
+    std::vector<double> vector_plano;
+    
+    for(int i=0;i<w.size();i++){
+        for(int j=0;j<w[i].size();j++){
+            for(int k=0;k<w[i][j].size();k++){
+                vector_plano.push_back(w[i][j][k]);
+            }
+        }
+    }
+    
+    for(int i=0;i<b.size();i++){
+        for(int j=0;j<b[i].size();j++){
+            vector_plano.push_back(b[i][j]);
+        }
+    }
+
+    for(int i=0;i<bias_decision.size();i++){
+        vector_plano.push_back(bias_decision[i]);
+    }
+    
+    return vector_plano;
+}
+
+void individuo::desaplanar_parametros(std::vector<double>& vector_plano) {
+    int idx=0;
+
+    for(int i=0;i<w.size();i++){
+        for(int j=0;j<w[i].size();j++){
+            for(int k=0;k<w[i][j].size();k++){
+                w[i][j][k]=vector_plano[idx++];
+            }
+        }
+    }
+
+    for(int i=0;i<b.size();i++){
+        for(int j=0;j<b[i].size();j++){
+            b[i][j]=vector_plano[idx++];
+        }
+    }
+
+    for(int i=0;i<bias_decision.size();i++){
+        bias_decision[i]=vector_plano[idx++];
+    }
 }
 
 void guardar_resultados(std::tuple<unsigned int,
@@ -406,18 +452,18 @@ void guardar_resultados(std::tuple<unsigned int,
         throw std::runtime_error("NO SE ENCONTRÓ EL ARCHIVO DE SALIDA, los resultados no se guardaron, terminando programa");
     }
 
-    unsigned int seed=get<0>(resultados);
-    std::vector<double> best_loss=get<1>(resultados);
-    std::vector<double> worst_loss=get<2>(resultados);
-    std::vector<double> best_accuracy=get<3>(resultados);
-    std::vector<double> worst_accuracy=get<4>(resultados);
+    unsigned int seed=                  get<0>(resultados);
+    std::vector<double> best_loss=      get<1>(resultados);
+    std::vector<double> worst_loss=     get<2>(resultados);
+    std::vector<double> best_accuracy=  get<3>(resultados);
+    std::vector<double> worst_accuracy= get<4>(resultados);
     std::vector<double> iteracion_mejor=get<5>(resultados);
-    std::vector<double> iteracion_peor=get<6>(resultados);
-    std::vector<double> promedio=get<7>(resultados);
-    std::vector<double> desvest=get<8>(resultados);
+    std::vector<double> iteracion_peor= get<6>(resultados);
+    std::vector<double> promedio=       get<7>(resultados);
+    std::vector<double> desvest=        get<8>(resultados);
     std::vector<double> tiempo_por_iteracion=get<9>(resultados);
     std::vector<double> poblacion_final=get<10>(resultados);
-    std::vector<bool> succes=get<11>(resultados);
+    std::vector<bool> succes=           get<11>(resultados);
 
     archivo<<"{\n";
     archivo<<"  \"Seed\": "<<seed<<",\n";

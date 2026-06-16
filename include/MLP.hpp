@@ -55,6 +55,9 @@ struct individuo{
     static thread_local std::uniform_int_distribution<int>     rndm_int;
     static thread_local std::uniform_real_distribution<double> rndm_dbl;
 
+    //atributos para CMSA
+    int n;
+
     //atributos para PSO
     individuo(int n_capas=0, 
               std::vector<int> estructura={}, 
@@ -66,6 +69,10 @@ struct individuo{
               std::vector<double> bias_decision={},
               double fitness=0, 
               unsigned int seed=27);
+
+    std::vector<double> aplanar_parametros();
+
+    void desaplanar_parametros(std::vector<double>& vector_plano);
 
     void set_atributos_ED(double F_, double C_r_);
 
@@ -511,12 +518,6 @@ public:
         for(int i=0;i<dato->n_output;i++){
             salida_final[i]=salidas[ind->n_capas-1][i];
         }
-
-        /*
-        for(int i=0;i<dato->n_output;i++){
-            std::cout<<"-- "<<salida_final[i]<<" --"<<std::endl;
-        }
-        std::cout<<std::endl;*/
         
         //si el problema es multiclass, entonces necesitamos softmax
         if(dato->problem==problem_type::multiclass_classification){

@@ -24,7 +24,7 @@
         "sigmoid"
     ],
     
-    "N iters": 1000,
+    "N iters": 300,
     "N inds": 200,
     
     "Normalizacion": 1,
@@ -36,6 +36,9 @@
     "C_r": 0.9,
     
     "Mutacion": "pbest",
+
+    "N nuevos inds":    1, 
+    "N padres":         100, 
 
     "Verbose": -1
 }

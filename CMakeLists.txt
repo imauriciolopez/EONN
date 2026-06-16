@@ -8,6 +8,8 @@ find_package(OpenMP REQUIRED)
 
 include_directories(include)
 
+include_directories(eigen-5.0.0)
+
 add_library(tarea_2_2_2_libs
     src/ED.cpp
     src/PSO.cpp

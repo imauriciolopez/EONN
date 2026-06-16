@@ -299,4 +299,10 @@ template <typename T> T promedio(std::vector<std::vector<T> > v){
     }
 }
 
+template <typename T> std::vector<std::vector<T> > eye(int n, T val){
+    std::vector<std::vector<T> > res(n, std::vector<T>(n, 0.0));
+    for(int i=0;i<n;i++) res[i][i]=val;
+    return res;
+}
+
 #endif
